@@ -8,8 +8,8 @@ import { post } from "../../utilities";
  *
  * Proptypes
  * @param {string} defaultText is the placeholder text
- * @param {string} storyId optional prop, used for comments
- * @param {({storyId, value}) => void} onSubmit: (function) triggered when this post is submitted, takes {storyId, value} as parameters
+ * @param {string} PostId optional prop, used for comments
+ * @param {({PostId, value}) => void} onSubmit: (function) triggered when this post is submitted, takes {PostId, value} as parameters
  */
 const NewPostInput = (props) => {
   const [value, setValue] = useState("");
@@ -67,13 +67,13 @@ const NewComment = (props) => {
 };
 
 /**
- * New Story is a New Post component for comments
+ * New Post is a New Post component for comments
  *
  * Proptypes
  * @param {string} defaultText is the placeholder text
  */
-const NewStory = (props) => {
-  const addStory = (value) => {
+const NewPost = (props) => {
+  const addPost = (value) => {
     const body = { content: value };
     post("/api/story", body).then((story) => {
       // display this story on the screen
@@ -97,6 +97,6 @@ const NewMessage = (props) => {
   };
 
   return <NewPostInput defaultText="New Message" onSubmit={sendMessage} />;
-}
+};
 
-export { NewComment, NewStory, NewMessage };
+export { NewComment, NewPost, NewMessage };
