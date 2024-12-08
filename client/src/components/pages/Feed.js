@@ -9,6 +9,15 @@ const test_Post = {
   creator_name: "test",
   creator_id: "123",
   content: "I am allergic to cats",
+  rating: 10.0,
+  comments: [
+    {
+      _id: "123",
+      creator_name: "test",
+      creator_id: "123",
+      content: "I am allergic to cats",
+    },
+  ],
 };
 
 const Feed = (props) => {
@@ -41,6 +50,8 @@ const Feed = (props) => {
         creator_id={PostObj.creator_id}
         userId={props.userId}
         content={PostObj.content}
+        rating={PostObj.rating}
+        comments={PostObj.comments}
       />
     ));
   } else {

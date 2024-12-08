@@ -40,6 +40,7 @@ const Card = (props) => {
         content={props.content}
         rating={props.rating}
         contents={props.contents}
+        comments={props.comments}
       />
       {/* <CommentsBlock
         story={props}

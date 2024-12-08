@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./SinglePost.css";
 
 /**
  * Rate is a component that renders creator and content of a post
@@ -12,11 +13,17 @@ import { Link } from "react-router-dom";
  */
 const SinglePost = (props) => {
   return (
-    <div className="Card-Post">
-      {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold"> */}
-      <p className="Card-PostCreator">made by {props.creator_name}</p>
-      {/* </Link> */}
-      <p className="Card-PostContent">{props.content}</p>
+    <div className="SinglePost-container">
+      <div className="SinglePost-Post">
+        {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold"> */}
+        <p className="SinglePost-PostCreator">made by {props.creator_name}</p>
+        {/* </Link> */}
+        <p className="SinglePost-PostContent">{props.content}</p>
+      </div>
+      <div className="SinglePost-rating">
+        <p>{props.rating}</p>
+        <p>{props.comments.length}</p>
+      </div>
     </div>
   );
 };

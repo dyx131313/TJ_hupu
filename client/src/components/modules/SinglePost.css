@@ -1,0 +1,30 @@
+.SinglePost-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.SinglePost-Post {
+  flex: 1;
+  margin-right: var(--m);
+}
+
+.SinglePost-PostCreator {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: var(--s);
+}
+
+.SinglePost-PostContent {
+  font-size: 18px;
+  margin-bottom: var(--m);
+}
+
+.SinglePost-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 14px;
+  color: var(--black);
+}

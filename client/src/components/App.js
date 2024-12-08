@@ -16,6 +16,7 @@ import NavBar from "./modules/NavBar.js";
 import Space from "./pages/Space.js";
 import Feed from "./pages/Feed.js";
 import SignUp from "./pages/SignUp.js";
+import LogIn from "./pages/LogIn.js";
 
 /**
  * Define the "App" component
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
           <Route path="/Space" element={<Space userId={userId} />} />
           <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/LogIn" element={<LogIn />} />
         </Routes>
       </div>
     </>
