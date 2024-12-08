@@ -9,8 +9,9 @@ const GOOGLE_CLIENT_ID = "FILL ME IN";
 
 const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      {userId ? (
+    // <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+    <div>
+      {/* {userId ? (
         <button
           onClick={() => {
             googleLogout();
@@ -21,7 +22,7 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
         </button>
       ) : (
         <GoogleLogin onSuccess={handleLogin} onError={(err) => console.log(err)} />
-      )}
+      )} */}
       <h1>Good luck on your project :)</h1>
       <h2> What you need to change in this skeleton</h2>
       <ul>
@@ -40,7 +41,8 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
       <a href="https://docs.google.com/document/d/110JdHAn3Wnp3_AyQLkqH2W8h5oby7OVsYIeHYSiUzRs/edit?usp=sharing">
         Check out this getting started guide
       </a>
-    </GoogleOAuthProvider>
+    </div>
+    // </GoogleOAuthProvider>
   );
 };
 
