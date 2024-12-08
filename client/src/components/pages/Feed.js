@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Card from "../modules/Card.js";
-import { NewStory } from "../modules/NewPostInput.js";
+import { NewPost } from "../modules/NewPostInput.js";
 
 import { get } from "../../utilities";
 
-const test_story = {
+const test_Post = {
   _id: "123",
   creator_name: "test",
   creator_id: "123",
@@ -12,7 +12,7 @@ const test_story = {
 };
 
 const Feed = (props) => {
-  const [stories, setStories] = useState([test_story]);
+  const [Posts, setPosts] = useState([test_Post]);
 
   // called when the "Feed" component "mounts", i.e.
   // when it shows up on screen
@@ -26,30 +26,30 @@ const Feed = (props) => {
 
   // this gets called when the user pushes "Submit", so their
   // post gets added to the screen right away
-  const addNewStory = (storyObj) => {
-    setStories([storyObj].concat(stories));
+  const addNewPost = (PostObj) => {
+    setPosts([PostObj].concat(Posts));
   };
 
-  let storiesList = null;
-  const hasStories = stories.length !== 0;
-  if (hasStories) {
-    storiesList = stories.map((storyObj) => (
+  let PostsList = null;
+  const hasPosts = Posts.length !== 0;
+  if (hasPosts) {
+    PostsList = Posts.map((PostObj) => (
       <Card
-        key={`Card_${storyObj._id}`}
-        _id={storyObj._id}
-        creator_name={storyObj.creator_name}
-        creator_id={storyObj.creator_id}
+        key={`Card_${PostObj._id}`}
+        _id={PostObj._id}
+        creator_name={PostObj.creator_name}
+        creator_id={PostObj.creator_id}
         userId={props.userId}
-        content={storyObj.content}
+        content={PostObj.content}
       />
     ));
   } else {
-    storiesList = <div>No stories!</div>;
+    PostsList = <div>No stories!</div>;
   }
   return (
     <>
-      {props.userId && <NewStory addNewStory={addNewStory} />}
-      {storiesList}
+      {props.userId && <NewPost addNewPost={addNewPost} />}
+      {PostsList}
     </>
   );
 };

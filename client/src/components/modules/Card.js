@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import SingleStory from "./SingleStory.js";
+import SinglePost from "./SinglePost.js";
 // import CommentsBlock from "./CommentsBlock.js";
 import { get } from "../../utilities";
 
 import "./Card.css";
 
 /**
- * Card is a component for displaying content like stories
+ * Card is a component for displaying content like posts
  *
  * Proptypes
- * @param {string} _id of the story
+ * @param {string} _id of the Post
  * @param {string} creator_name
  * @param {string} creator_id
- * @param {string} content of the story
+ * @param {string} content of the Post
+ * @param {string} rating of the Post
+ * @param {number} contents of the Post
  */
 const Card = (props) => {
   // const [comments, setComments] = useState([]);
@@ -31,11 +33,13 @@ const Card = (props) => {
 
   return (
     <div className="Card-container">
-      <SingleStory
+      <SinglePost
         _id={props._id}
         creator_name={props.creator_name}
         creator_id={props.creator_id}
         content={props.content}
+        rating={props.rating}
+        contents={props.contents}
       />
       {/* <CommentsBlock
         story={props}
