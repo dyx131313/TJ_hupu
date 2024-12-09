@@ -1,47 +1,40 @@
-/*
-|--------------------------------------------------------------------------
-| api.js -- server routes
-|--------------------------------------------------------------------------
-|
-| This file defines the routes for your server.
-|
-*/
-
 const express = require("express");
-
-// import models so we can interact with the database
-const User = require("./models/user");
-
-// import authentication library
-const auth = require("./auth");
-
-// api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
+const Post = require("./models/post"); // 确保正确导入 Post 模型
 
-//initialize socket
-const socketManager = require("./server-socket");
-
-router.post("/login", auth.login);
-router.post("/logout", auth.logout);
-router.get("/whoami", (req, res) => {
-  if (!req.user) {
-    // not logged in
-    return res.send({});
-  }
-
-  res.send(req.user);
+router.get("/posts", (req, res) => {
+  Post.find({})
+    .then((posts) => {
+      res.send(posts);
+    })
+    .catch((err) => {
+      console.error("Error fetching posts:", err);
+      res.status(500).send("Internal Server Error");
+    });
 });
 
-router.post("/initsocket", (req, res) => {
-  // do nothing if user not logged in
-  if (req.user)
-    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
-  res.send({});
-});
+router.post("/post", (req, res) => {
+  const newPost = new Post({
+    title: req.body.title,
+    content: req.body.content,
+    creator_id: req.user ? req.user._id : null,
+    creator_name: req.user ? req.user.name : "Anonymous",
+    rating: req.body.rating || 0,
+    rates: [],
+  });
 
-// |------------------------------|
-// | write your API methods below!|
-// |------------------------------|
+  console.log("Creating new post:", newPost);
+
+  newPost
+    .save()
+    .then((post) => {
+      res.send(post);
+    })
+    .catch((err) => {
+      console.error("Error saving post:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

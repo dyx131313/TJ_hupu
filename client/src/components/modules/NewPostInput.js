@@ -74,14 +74,18 @@ const NewComment = (props) => {
  */
 const NewPost = (props) => {
   const addPost = (value) => {
-    const body = { content: value };
-    post("/api/story", body).then((story) => {
+    console.log(value);
+    const body = {
+      title: value,
+      body: value,
+    };
+    post("/api/post", body).then((Post) => {
       // display this story on the screen
-      props.addNewStory(story);
+      props.addNewPost(Post);
     });
   };
 
-  return <NewPostInput defaultText="New Story" onSubmit={addStory} />;
+  return <NewPostInput defaultText="New Post" onSubmit={addPost} />;
 };
 
 /**
