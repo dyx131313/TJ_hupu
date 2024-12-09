@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { post } from "../../utilities";
+import { useNavigate, Link } from "react-router-dom";
 import "./LoginTable.css";
 
 const LoginTable = () => {
@@ -7,6 +8,8 @@ const LoginTable = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,16 +21,26 @@ const LoginTable = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("fronted login", formData);
     // 处理登录逻辑
-    console.log("Form submitted:", formData);
+    post("/api/login", formData)
+      .then((response) => {
+        console.log("User logged in:", response);
+        // 重定向到主页
+        navigate("/");
+      })
+      .catch((err) => {
+        console.error("Error logging in:", err);
+        alert("登录失败，请检查您的邮箱和密码");
+      });
   };
 
   return (
-    <div className="LoginTable-container">
-      <h2>Log In</h2>
+    <div className="login-container">
+      <h2>用户登录</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">邮箱</label>
           <input
             type="email"
             id="email"
@@ -38,7 +51,7 @@ const LoginTable = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">密码</label>
           <input
             type="password"
             id="password"
@@ -48,12 +61,12 @@ const LoginTable = () => {
             required
           />
         </div>
-        <button type="submit" className="LoginTable-button">
-          Log In
+        <button type="submit" className="login-button">
+          登录
         </button>
       </form>
       <p>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
+        还没有账户? <Link to="/signup">注册</Link>
       </p>
     </div>
   );

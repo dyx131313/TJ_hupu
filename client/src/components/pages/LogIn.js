@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import LoginTable from "../modules/LogInTable";
+import LogInTable from "../modules/LogInTable";
 
 const LogIn = () => {
   return (
     <div>
-      <LoginTable />
+      <LogInTable />
     </div>
   );
 };
