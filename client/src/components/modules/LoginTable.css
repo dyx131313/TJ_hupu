@@ -1,4 +1,4 @@
-.signup-container {
+.LoginTable-container {
   max-width: 400px;
   margin: 100px auto;
   padding: 20px;
@@ -7,7 +7,7 @@
   background-color: #f9f9f9;
 }
 
-.signup-container h2 {
+.LoginTable-container h2 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -27,7 +27,7 @@
   box-sizing: border-box;
 }
 
-.signup-button {
+.LoginTable-button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -37,11 +37,11 @@
   cursor: pointer;
 }
 
-.signup-button:hover {
+.LoginTable-button:hover {
   background-color: #0056b3;
 }
 
-.signup-container p {
+.LoginTable-container p {
   text-align: center;
   margin-top: 20px;
 }

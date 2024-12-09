@@ -1,0 +1,142 @@
+.signup-container {
+  max-width: 600px;
+  min-height: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: linear-gradient(-180deg, #bcc5ce 0%, #929ead 98%),
+    radial-gradient(at top left, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background-blend-mode: screen;
+}
+
+.signup-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+.signup-container p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+ul li {
+  position: absolute;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  list-style: none;
+  opacity: 0;
+}
+
+.square li {
+  top: 40vh;
+  left: 90vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(2) {
+  top: 80vh;
+  left: 10vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(3) {
+  top: 80vh;
+  left: 85vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(4) {
+  top: 10vh;
+  left: 70vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(5) {
+  top: 10vh;
+  left: 10vw;
+  animation: square 10s linear infinite;
+}
+
+.circle li {
+  bottom: 0;
+  left: 15vw;
+  animation: circle 10s linear infinite;
+}
+
+.circle li:nth-child(2) {
+  left: 35vw;
+  animation-delay: 2s;
+}
+
+.circle li:nth-child(3) {
+  left: 55vw;
+  animation-delay: 4s;
+}
+
+.circle li:nth-child(4) {
+  left: 75vw;
+  animation-delay: 6s;
+}
+
+.circle li:nth-child(5) {
+  left: 90vw;
+  animation-delay: 8s;
+}
+
+@keyframes square {
+  0% {
+    transform: scale(0) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(5) rotateY(1000deg);
+    opacity: 0;
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: scale(0) rotateY(0deg);
+    opacity: 1;
+    bottom: 0;
+    border-radius: 0;
+  }
+  100% {
+    transform: scale(5) rotateY(1000deg);
+    opacity: 0;
+    bottom: 90vh;
+    border-radius: 50%;
+  }
+}
