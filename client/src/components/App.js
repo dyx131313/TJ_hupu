@@ -51,7 +51,7 @@ const App = () => {
     post("/api/logout");
   };
   const location = useLocation(); // 获取当前路径、
-  const isSignUpPage = location.pathname === "/SignUp";
+  const isSignUpPage = (location.pathname === "/SignUp" || location.pathname === "/LogIn");
   return (
     <>
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />

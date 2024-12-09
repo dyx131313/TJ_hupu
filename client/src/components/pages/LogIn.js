@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginTable from "../modules/LogInTable";
+import LoginTable from "../modules/LoginTable.js";
 
 const LogIn = () => {
   return (

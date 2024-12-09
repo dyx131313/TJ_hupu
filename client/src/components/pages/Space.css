@@ -1,11 +1,21 @@
 .Space-profileContainer {
-  width: 30%;
+  width: 500px;
+  height: 1100px;
+  border: 10px solid transparent;
+  backdrop-filter: blur(10px) brightness(90%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px
 }
 
 .Space-avatarContainer {
   padding: 0 35%;
 }
 
+@keyframes borderAnimation2  {
+  to {
+    background-position: 100%;
+  }
+}
 .Space-avatar {
   /* make it responsive */
   max-width: 100%;
@@ -63,4 +73,39 @@
   font-weight: 300;
   font-size: 24px;
   margin: var(--m) var(--s);
+}
+
+.content {
+  border-left : 5px dotted rgb(102, 102, 102);
+  margin-left: 50px;
+  width: 1100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.SpaceAll {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--m);
+}
+
+.myPublish {
+  height : 45%;
+  width: 90%;
+  margin-left :  50px;
+  margin-bottom: 50px;
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #ffffff, #dbdbdb) 1;
+  clip-path: inset(0 round 10px);
+}
+
+.myComment {
+  height : 45%;
+  width: 90%;
+  margin-left :  50px;
+  margin-bottom: 50px;
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #ffffff, #dbdbdb) 1;
+  clip-path: inset(0 round 10px);
 }

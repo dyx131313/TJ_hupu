@@ -1,25 +1,28 @@
 .App-container {
-  min-width: 100vw;
-  min-height: 100vh;
-  margin: auto;
-  background-color: #dcd9d4;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%),
-    radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.5) 50%);
-  background-blend-mode: soft-light, screen;
-}
-
-.signup-background {
-  min-width: 100vw;
+  min-width: 90vw;
   min-height: 100vh;
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background: linear-gradient(#9797fa, #c99ebe);
-  background-size: cover; /* 图片自动调整大小以覆盖整个元素 */
-  background-repeat: no-repeat; /* 图片不重复 */
-  background-position: center center; /* 图片居中显示 */
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  justify-content : flex-start; 
+  flex-direction: column;
+  display: flex;
 }
 
-#root {
-  padding: 0;
+.signup-background {
+  min-width: 90vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; background-blend-mode: multiply,multiply;  background-size: cover; /* 图片自动调整大小以覆盖整个元素 */
+  background-repeat: no-repeat; /* 图片不重复 */
+  background-position: center center; /* 图片居中显示 */
+  display: flex; 
+  justify-content : space-around; 
+  align-items: center;
+  flex-direction: row;
 }
+
+

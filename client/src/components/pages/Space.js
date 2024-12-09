@@ -28,34 +28,43 @@ const Space = (props) => {
   //   return <div> Loading! </div>;
   // }
   return (
-    <div className="Space-profileContainer">
-      <div
-        className="Space-avatarContainer"
-        onClick={() => {
-          incrementCatHappiness();
-        }}
-      >
-        <div className="Space-avatar" />
-      </div>
+    <div className="SpaceAll">
+      <div className="Space-profileContainer">
+        <div
+          className="Space-avatarContainer"
+          onClick={() => {
+            incrementCatHappiness();
+          }}
+        >
+          <div className="Space-avatar" />
+        </div>
 
-      <h1 className="Space-name u-textCenter">{Test.name}</h1>
-      <hr className="Space-linejj" />
-      <div className="Space-infoContainer">
-        <div className="Space-subContainer u-textCenter">
-          <h4 className="Space-subTitle">About Me</h4>
-          <div id="Space-description">
-            I am really allergic to cats i don't know why i have a catbook
+        <h1 className="Space-name u-textCenter">{Test.name}</h1>
+        <hr className="Space-linejj" />
+        <div className="Space-infoContainer">
+          <div className="Space-subContainer u-textCenter">
+            <h4 className="Space-subTitle">About Me</h4>
+            <div id="Space-description">
+              I am really allergic to cats i don't know why i have a catbook
+            </div>
+          </div>
+          <div className="Space-subContainer u-textCenter">
+            <h4 className="Space-subTitle">Cat Happiness</h4>
+            {/* <CatHappiness catHappiness={catHappiness} /> */}
+          </div>
+          <div className="Space-subContainer u-textCenter">
+            <h4 className="Space-subTitle">My Favorite Type of Cat</h4>
+            <div id="favorite-cat">corgi</div>
           </div>
         </div>
-        <div className="Space-subContainer u-textCenter">
-          <h4 className="Space-subTitle">Cat Happiness</h4>
-          {/* <CatHappiness catHappiness={catHappiness} /> */}
+      </div> 
+      <div className="content">
+        <div className="myPublish">
         </div>
-        <div className="Space-subContainer u-textCenter">
-          <h4 className="Space-subTitle">My Favorite Type of Cat</h4>
-          <div id="favorite-cat">corgi</div>
+        <hr></hr>
+        <div className="myComment">
         </div>
-      </div>
+      </div>    
     </div>
   );
 };

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Card from "../modules/Card.js";
 import { NewPost } from "../modules/NewPostInput.js";
-
 import { get } from "../../utilities";
-
+import "./Feed.css"
 const test_Post = {
   _id: "123",
   creator_name: "test",
@@ -58,10 +57,10 @@ const Feed = (props) => {
     PostsList = <div>No stories!</div>;
   }
   return (
-    <>
+    <div className="PostList">
       {props.userId && <NewPost addNewPost={addNewPost} />}
       {PostsList}
-    </>
+    </div>
   );
 };
 
