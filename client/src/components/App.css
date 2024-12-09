@@ -1,5 +1,25 @@
 .App-container {
-  max-width: 960px;
-  padding: var(--m) var(--m);
+  min-width: 100vw;
+  min-height: 100vh;
   margin: auto;
+  background-color: #dcd9d4;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%),
+    radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.5) 50%);
+  background-blend-mode: soft-light, screen;
+}
+
+.signup-background {
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: linear-gradient(#9797fa, #c99ebe);
+  background-size: cover; /* 图片自动调整大小以覆盖整个元素 */
+  background-repeat: no-repeat; /* 图片不重复 */
+  background-position: center center; /* 图片居中显示 */
+}
+
+#root {
+  padding: 0;
 }

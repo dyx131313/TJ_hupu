@@ -2,24 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./NavBar.css";
-
+import logo from "../../public/logo.jpg"; //
 const NavBar = (props) => {
   return (
     <nav className="NavBar-container">
-      <div className="NavBar-title u-inlineBlock">TJ hupu</div>
+      <img className="NavBar-logo" src={logo} alt="TJ hupu logo" />
       <div className="NavBar-linkContainer u-inlineBlock">
         <Link to="/" className="NavBar-link">
-          Home
+          主页
         </Link>
         <Link to="/Space" className="NavBar-link">
-          Space
+          个人空间
         </Link>
         <Link to="/SignUp" className="NavBar-link">
-          Sign Up
+          注册登录
         </Link>
         <Link to="/LogIn" className="NavBar-link">
-          Log In
+          登入
         </Link>
+        <div className="NavBar-title u-inlineBlock">TJ hupu</div>
       </div>
     </nav>
   );

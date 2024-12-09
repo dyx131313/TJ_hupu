@@ -17,6 +17,7 @@ import Space from "./pages/Space.js";
 import Feed from "./pages/Feed.js";
 import SignUp from "./pages/SignUp.js";
 import LogIn from "./pages/LogIn.js";
+import Detail from "./pages/Detail.js";
 
 /**
  * Define the "App" component
@@ -69,6 +70,7 @@ const App = () => {
           <Route path="/Space" element={<Space userId={userId} />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/LogIn" element={<LogIn />} />
+          <Route path="/Detail" element={<Detail userId={userId} />} />
         </Routes>
       </div>
     </>

@@ -13,18 +13,21 @@ import "./SinglePost.css";
  */
 const SinglePost = (props) => {
   return (
-    <div className="Card-post">
-      <div className="SinglePost-Post">
-        {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold"> */}
-        <p className="SinglePost-PostCreator">made by {props.creator_name}</p>
-        {/* </Link> */}
-        <p className="SinglePost-PostContent">{props.content}</p>
+    <>
+      <div className="Card-post">
+        <div className="SinglePost-Post">
+          {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold"> */}
+          <p className="SinglePost-PostCreator">made by {props.creator_name}</p>
+          {/* </Link> */}
+          <p className="SinglePost-PostContent">{props.content}</p>
+        </div>
+        <div className="SinglePost-rate">
+          <p>{props.rating}</p>
+          <p>{props.rates_length}</p>
+        </div>
       </div>
-      <div className="SinglePost-rate">
-        <p>{props.rating}</p>
-        <p>{props.rates_length}</p>
-      </div>
-    </div>
+      {props.hot_rate ? <p>Hot Rate: {props.hot_rate}</p> : null}
+    </>
   );
 };
 

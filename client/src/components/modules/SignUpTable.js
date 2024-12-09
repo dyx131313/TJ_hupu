@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUpTable.css";
-
 const SignUpTable = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -24,11 +23,11 @@ const SignUpTable = () => {
   };
 
   return (
-    <div className="SignUpTable-container">
-      <h2>Sign Up</h2>
+    <div className="signup-container">
+      <h2>用户注册</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">用户名</label>
           <input
             type="text"
             id="username"
@@ -39,7 +38,7 @@ const SignUpTable = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">邮箱</label>
           <input
             type="email"
             id="email"
@@ -50,7 +49,7 @@ const SignUpTable = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">密码</label>
           <input
             type="password"
             id="password"
@@ -60,13 +59,31 @@ const SignUpTable = () => {
             required
           />
         </div>
-        <button type="submit" className="SignUpTable-button">
-          Sign Up
+        <button type="submit" className="signup-button">
+          注册
         </button>
       </form>
       <p>
-        Already have an account? <Link to="/login">Log In</Link>
+        已经拥有账户? <Link to="/login">登录</Link>
       </p>
+      <div class="square">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="circle">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </div>
   );
 };
