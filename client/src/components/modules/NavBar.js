@@ -17,9 +17,15 @@ const NavBar = (props) => {
         <Link to="/SignUp" className="NavBar-link">
           注册
         </Link>
-        <Link to="/LogIn" className="NavBar-link">
-          登录
-        </Link>
+        {props.userId ? (
+          <Link to="/LogOut" className="NavBar-link">
+            登出
+          </Link>
+        ) : (
+          <Link to="/LogIn" className="NavBar-link">
+            登录
+          </Link>
+        )}
         <div className="NavBar-title u-inlineBlock">TJ hupu</div>
       </div>
     </nav>

@@ -2,6 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const path = require("path");
+const cors = require("cors");
 const api = require("./api");
 
 const app = express();
@@ -22,6 +23,13 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(`Error connecting to MongoDB: ${err}`));
 
+app.use(
+  cors({
+    origin: "http://localhost:5050", // 前端地址
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,6 +38,7 @@ app.use(
     secret: "session-secret",
     resave: false,
     saveUninitialized: false,
+    cookie: { maxAge: 60000 * 60 * 24 }, // 设置 cookie 的最大有效期为 1 天
   })
 );
 

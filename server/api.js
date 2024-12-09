@@ -58,13 +58,18 @@ router.post("/signup", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  console.log("Logging in user:", email);
-  User.findOne({ email })
+  const { emailOrName, password } = req.body;
+
+  User.findOne({
+    $or: [{ email: emailOrName }, { name: emailOrName }],
+  })
     .then((user) => {
       if (!user || user.password !== password) {
-        return res.status(401).send("Invalid email or password");
+        return res.status(401).send("Invalid email, username or password");
       }
+
+      // 将用户信息存储在会话中
+      req.session.user = user;
       console.log("User logged in:", user);
       res.send({ msg: "Login successful" });
     })
@@ -72,6 +77,33 @@ router.post("/login", (req, res) => {
       console.error("Error finding user:", err);
       res.status(500).send("Internal Server Error");
     });
+});
+
+router.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send("Error logging out");
+    }
+    res.send({ msg: "Logout successful" });
+  });
+});
+
+// 验证用户是否已登录的中间件
+const isAuthenticated = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    res.status(401).send("Unauthorized");
+  }
+};
+
+// 受保护的路由示例
+router.get("/protected", isAuthenticated, (req, res) => {
+  res.send("This is a protected route");
+});
+
+router.get("/whoami", (req, res) => {
+  res.send(req.session.user || {});
 });
 
 // anything else falls to this "not found" case

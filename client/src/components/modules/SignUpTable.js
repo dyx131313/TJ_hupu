@@ -47,9 +47,9 @@ const SignUpTable = () => {
           <label htmlFor="username">用户名</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={formData.username}
+            id="name"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />

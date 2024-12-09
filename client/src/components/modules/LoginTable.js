@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { post } from "../../utilities";
 import { useNavigate, Link } from "react-router-dom";
-import "./LoginTable.css";
+import "./LogInTable.css";
 
-const LoginTable = () => {
+const LoginTable = (props) => {
   const [formData, setFormData] = useState({
-    email: "",
+    emailOrName: "",
     password: "",
   });
 
@@ -21,18 +21,8 @@ const LoginTable = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("fronted login", formData);
     // 处理登录逻辑
-    post("/api/login", formData)
-      .then((response) => {
-        console.log("User logged in:", response);
-        // 重定向到主页
-        navigate("/");
-      })
-      .catch((err) => {
-        console.error("Error logging in:", err);
-        alert("登录失败，请检查您的邮箱和密码");
-      });
+    props.handleLogin(formData);
   };
 
   return (
@@ -40,12 +30,12 @@ const LoginTable = () => {
       <h2>用户登录</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">邮箱</label>
+          <label htmlFor="emailOrName">邮箱或用户名</label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
+            type="text"
+            id="emailOrName"
+            name="emailOrName"
+            value={formData.emailOrName}
             onChange={handleChange}
             required
           />
