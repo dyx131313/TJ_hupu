@@ -10,7 +10,7 @@ const test_Post = {
   creator_id: "123",
   content: "I am allergic to cats",
   rating: 10.0,
-  comments: [
+  rates: [
     {
       _id: "123",
       creator_name: "test",
@@ -51,7 +51,7 @@ const Feed = (props) => {
         userId={props.userId}
         content={PostObj.content}
         rating={PostObj.rating}
-        comments={PostObj.comments}
+        rates={PostObj.rates}
       />
     ));
   } else {

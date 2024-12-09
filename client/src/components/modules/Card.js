@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SinglePost from "./SinglePost.js";
 // import CommentsBlock from "./CommentsBlock.js";
+import RatesBlock from "./RatesBlock.js";
 import { get } from "../../utilities";
 
 import "./Card.css";
@@ -40,15 +41,15 @@ const Card = (props) => {
         content={props.content}
         rating={props.rating}
         contents={props.contents}
-        comments={props.comments}
+        rates_length={props.rates.length}
       />
-      {/* <CommentsBlock
+      <RatesBlock
         story={props}
-        comments={comments}
+        rates={props.rates}
         creator_id={props.creator_id}
         userId={props.userId}
-        addNewComment={addNewComment}
-      /> */}
+        // addNewComment={addNewComment}
+      />
     </div>
   );
 };

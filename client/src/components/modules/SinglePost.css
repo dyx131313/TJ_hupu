@@ -1,13 +1,11 @@
 .SinglePost-container {
   width: 100%;
-  display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .SinglePost-Post {
   flex: 1;
-  margin-right: var(--m);
 }
 
 .SinglePost-PostCreator {
