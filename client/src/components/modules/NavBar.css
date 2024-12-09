@@ -1,15 +1,57 @@
+/* ./modules/NavBar.css */
+/* ./modules/NavBar.css */
+
+:root {
+  --primary: #4a90e2;
+  --white: #ffffff;
+  --s: 10px;
+  --m: 20px;
+  --l: 30px;
+}
+
 .NavBar-container {
+  background-color: var(--primary);
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+}
+
+.NavBar-logo a,
+.NavBar-title {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.NavBar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: var(--s) var(--m);
   background-color: var(--primary);
+  position: relative;
+}
+
+.NavBar-logo {
+  margin-right: var(--m);
+  color: var(--white);
+  width: 80px;
 }
 
 .NavBar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   color: var(--white);
-  font-size: 20px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .NavBar-linkContainer {
-  margin-left: var(--l);
+  display: flex;
+  align-items: center;
+  gap: var(--m);
 }
 
 .NavBar-link,

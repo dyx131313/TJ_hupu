@@ -15,10 +15,10 @@ const NavBar = (props) => {
           个人空间
         </Link>
         <Link to="/SignUp" className="NavBar-link">
-          注册登录
+          注册
         </Link>
         <Link to="/LogIn" className="NavBar-link">
-          登入
+          登录
         </Link>
         <div className="NavBar-title u-inlineBlock">TJ hupu</div>
       </div>

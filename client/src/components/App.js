@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom"; // 导入 useLocation
 
 import jwt_decode from "jwt-decode";
 
@@ -7,6 +7,8 @@ import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 
 import "../utilities.css";
+
+import "./App.css";
 
 import { socket } from "../client-socket.js";
 
@@ -48,11 +50,12 @@ const App = () => {
     setUserId(undefined);
     post("/api/logout");
   };
-
+  const location = useLocation(); // 获取当前路径、
+  const isSignUpPage = location.pathname === "/SignUp";
   return (
     <>
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-      <div className="App-container">
+      <div className={`App-container ${isSignUpPage ? "signup-background" : ""}`}>
         <Routes>
           <Route
             path="/"
