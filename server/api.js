@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("./models/post"); // 确保正确导入 Post 模型
 const User = require("./models/user"); // 确保正确导入 User 模型
+const Rate = require("./models/rate"); // 确保正确导入 Rate 模型
 
 router.get("/posts", (req, res) => {
   Post.find({})
@@ -14,14 +15,26 @@ router.get("/posts", (req, res) => {
     });
 });
 
-router.post("/post", (req, res) => {
+router.get("/posts/:postId/rates", (req, res) => {
+  console.log("backend Fetching rates for post:", req.params);
+  const { postId } = req.params;
+  Rate.find({ parent_id: postId })
+    .then((rates) => {
+      res.send(rates);
+    })
+    .catch((err) => {
+      console.error("Error fetching rates:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+router.post("/posts/post", (req, res) => {
   const newPost = new Post({
     title: req.body.title,
     content: req.body.content,
     creator_id: req.user ? req.user._id : null,
     creator_name: req.user ? req.user.name : "Anonymous",
     rating: req.body.rating || 0,
-    rates: [],
   });
 
   console.log("Creating new post:", newPost);
@@ -33,6 +46,27 @@ router.post("/post", (req, res) => {
     })
     .catch((err) => {
       console.error("Error saving post:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+router.post("/posts/:postId/rate", (req, res) => {
+  const { postId } = req.params;
+  const newRate = new Rate({
+    content: req.body.content,
+    creator_id: req.user ? req.user._id : null,
+    creator_name: req.user ? req.user.name : "Anonymous",
+    rating: req.body.rating,
+    parent_id: postId,
+  });
+
+  newRate
+    .save()
+    .then((rate) => {
+      res.send(rate);
+    })
+    .catch((err) => {
+      console.error("Error saving rate:", err);
       res.status(500).send("Internal Server Error");
     });
 });
@@ -86,6 +120,21 @@ router.post("/logout", (req, res) => {
     }
     res.send({ msg: "Logout successful" });
   });
+});
+
+router.get("/posts/:postId", (req, res) => {
+  const { postId } = req.params;
+  Post.findById(postId)
+    .then((post) => {
+      if (!post) {
+        return res.status(404).send("Post not found");
+      }
+      res.send(post);
+    })
+    .catch((err) => {
+      console.error("Error fetching post:", err);
+      res.status(500).send("Internal Server Error");
+    });
 });
 
 // 验证用户是否已登录的中间件

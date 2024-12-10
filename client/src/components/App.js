@@ -72,7 +72,7 @@ const App = () => {
         <Route path="/login" element={<LogIn handleLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/Space" element={<Space userId={userId} />} />
-        <Route path="/detail" element={<Detail userId={userId} />} />
+        <Route path="/detail/:postId" element={<Detail userId={userId} />} />
         <Route path="/create" element={<Create userId={userId} />} />
         <Route path="/logout" element={<LogOut handleLogout={handleLogout} />} />
         <Route path="*" element={<NotFound />} />

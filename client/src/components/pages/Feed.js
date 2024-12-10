@@ -48,6 +48,7 @@ const Feed = (props) => {
       _id={post._id}
       creator_name={post.creator_name}
       creator_id={post.creator_id}
+      user_id={props.userId}
       content={post.content}
       rating={post.rating}
       // rates_length={post.rates.length}

@@ -1,32 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import DetailPost from "../modules/DetailPost";
+import { get, post } from "../../utilities";
 
-const test_Post = {
-  _id: "123",
-  creator_name: "test",
-  creator_id: "123",
-  content: "I am allergic to cats",
-  rating: 10.0,
-  rates: [
-    {
-      _id: "123",
-      creator_name: "test",
-      creator_id: "123",
-      content: "I am allergic to cats",
-    },
-  ],
-};
+const Detail = () => {
+  const { postId } = useParams();
+  const [posts, setPosts] = useState(null);
 
-const Detail = (props) => {
+  useEffect(() => {
+    const fetchPost = async () => {
+      // console.log("Fetching post with id:", postId);
+      get(`/api/posts/${postId}`)
+        .then((data) => {
+          setPosts(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching post:", error);
+        });
+    };
+
+    fetchPost();
+  }, [postId]);
+
+  const addNewRate = async (rate) => {
+    try {
+      const newRate = await post(`/api/posts/${postId}/rate`, rate);
+      setPosts((prevPost) => ({
+        ...prevPost,
+        rates: [...prevPost.rates, newRate],
+      }));
+    } catch (error) {
+      console.error("Error adding new rate:", error);
+    }
+  };
+
+  if (!posts) {
+    return <div>加载中...</div>;
+  }
+
   return (
     <div>
       <DetailPost
-        _id={test_Post._id}
-        creator_name={test_Post.creator_name}
-        creator_id={test_Post.creator_id}
-        content={test_Post.content}
-        rating={test_Post.rating}
-        rates={test_Post.rates}
+        _id={postId}
+        creator_name={post.creator_name}
+        creator_id={post.creator_id}
+        content={post.content}
+        rating={post.rating}
+        addNewRate={addNewRate}
       />
     </div>
   );

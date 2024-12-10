@@ -6,7 +6,7 @@ import "./Card.css";
 const Card = (props) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/detail");
+    navigate(`/detail/${props._id}`);
   };
 
   return (
