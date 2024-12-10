@@ -71,8 +71,8 @@ const App = () => {
         <Route path="/" element={<Feed userId={userId} />} />
         <Route path="/login" element={<LogIn handleLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile/:id" element={<Space userId={userId} />} />
-        <Route path="/detail/:id" element={<Detail userId={userId} />} />
+        <Route path="/Space" element={<Space userId={userId} />} />
+        <Route path="/detail" element={<Detail userId={userId} />} />
         <Route path="/create" element={<Create userId={userId} />} />
         <Route path="/logout" element={<LogOut handleLogout={handleLogout} />} />
         <Route path="*" element={<NotFound />} />
