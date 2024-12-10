@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./Rate.css";
-import { post } from "../../utilities";
-
-const Rate = ({ onSubmit }) => {
+const Rate = (props) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
@@ -16,7 +14,7 @@ const Rate = ({ onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ rating, comment });
+    props.onSubmit({ rating, content: comment });
     setRating(0);
     setComment("");
   };
@@ -25,7 +23,7 @@ const Rate = ({ onSubmit }) => {
     <div className="rate-container">
       <form onSubmit={handleSubmit} className="rate-form">
         <div className="rating">
-          {[1, 2, 3, 4, 5].map((star) => (
+          {[2, 4, 6, 8, 10].map((star) => (
             <span
               key={star}
               className={`star ${rating >= star ? "selected" : ""}`}

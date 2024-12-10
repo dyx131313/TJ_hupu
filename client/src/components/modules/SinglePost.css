@@ -1,8 +1,17 @@
+/* SinglePost.css */
+
+.SinglePost {
+  width: 90%;
+  margin: 20px auto;
+}
+
 .SinglePost-container {
-  width: 100%;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .SinglePost-Post {
@@ -10,53 +19,55 @@
 }
 
 .SinglePost-PostCreator {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: var(--s);
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .SinglePost-PostContent {
-  font-size: 18px;
-  margin-bottom: var(--m);
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
 .SinglePost-rating {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: center;
   font-size: 14px;
-  color: var(--black);
+  color: #777;
 }
 
 .hotRate {
   font-weight: 900;
-  text-shadow: 0 1px hsl(0, 0%, 85%),
-  0 1px hsl(0, 0%, 80%),
-  0 1px hsl(0, 0%, 75%),
-  0 1px hsl(0, 0%, 70%),
-  0 1px hsl(0, 0%, 65%),
-  0 5px 10px black;
+  text-shadow: 0 1px hsl(0, 0%, 85%), 0 1px hsl(0, 0%, 80%), 0 1px hsl(0, 0%, 75%),
+    0 1px hsl(0, 0%, 70%), 0 1px hsl(0, 0%, 65%);
   position: relative;
   width: auto;
   height: auto;
   background: linear-gradient(-150deg, transparent 1.5em, #f7acac 0);
-  border-radius: .5em;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .4)) 100% 0 no-repeat;
-    width: 1.73em;
-    height: 3em;
-    transform: translateY(-1.3em) rotate(-30deg);
-    transform-origin: bottom right;
-    border-bottom-left-radius: inherit;
-    box-shadow: -.2em .2em .3em -.1em rgba(0, 0, 0, .15);
-  }
+  border-radius: 0.5em;
+  padding: 5px 10px;
+  color: #fff;
 }
 
-.SinglePost {
-  width: 90%;
+.hotRate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(
+    to left bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.2) 0,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  width: 20px;
+  height: 30px;
+  transform: translateY(-10px) rotate(-30deg);
+  transform-origin: bottom right;
+  border-bottom-left-radius: inherit;
+  box-shadow: -0.2em 0.2em 0.3em -0.1em rgba(0, 0, 0, 0.15);
 }

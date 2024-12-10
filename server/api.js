@@ -16,10 +16,10 @@ router.get("/posts", (req, res) => {
 });
 
 router.get("/posts/:postId/rates", (req, res) => {
-  console.log("backend Fetching rates for post:", req.params);
   const { postId } = req.params;
   Rate.find({ parent_id: postId })
     .then((rates) => {
+      console.log("rates", rates.length);
       res.send(rates);
     })
     .catch((err) => {
@@ -32,9 +32,10 @@ router.post("/posts/post", (req, res) => {
   const newPost = new Post({
     title: req.body.title,
     content: req.body.content,
-    creator_id: req.user ? req.user._id : null,
-    creator_name: req.user ? req.user.name : "Anonymous",
-    rating: req.body.rating || 0,
+    creator_id: req.body.creator_id,
+    creator_name: req.body.creator_name,
+    tot_rates: 0,
+    tot_rating: 0,
   });
 
   console.log("Creating new post:", newPost);
@@ -52,10 +53,11 @@ router.post("/posts/post", (req, res) => {
 
 router.post("/posts/:postId/rate", (req, res) => {
   const { postId } = req.params;
+  console.log("req.body", req.body);
   const newRate = new Rate({
     content: req.body.content,
-    creator_id: req.user ? req.user._id : null,
-    creator_name: req.user ? req.user.name : "Anonymous",
+    creator_id: req.body.creator_id,
+    creator_name: req.body.creator_name,
     rating: req.body.rating,
     parent_id: postId,
   });
@@ -67,6 +69,30 @@ router.post("/posts/:postId/rate", (req, res) => {
     })
     .catch((err) => {
       console.error("Error saving rate:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+router.post("/posts/:postId/update", async (req, res) => {
+  const { postId } = req.params;
+  Post.findById(postId)
+    .then((post) => {
+      let past_rating = post.tot_rating;
+      let past_rates = post.tot_rates;
+      post.tot_rates = past_rates + 1;
+      post.tot_rating = past_rating + req.body.rating;
+      post
+        .save()
+        .then((post) => {
+          res.send(post);
+        })
+        .catch((err) => {
+          console.error("Error updating post:", err);
+          res.status(500).send("Internal Server Error");
+        });
+    })
+    .catch((err) => {
+      console.error("Error finding post:", err);
       res.status(500).send("Internal Server Error");
     });
 });
