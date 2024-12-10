@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import LoginTable from "../modules/LoginTable.js";
+import LogInTable from "../modules/LogInTable";
 
-const LogIn = () => {
+const LogIn = (props) => {
   return (
     <div>
-      <LoginTable />
+      <LogInTable handleLogin={props.handleLogin} />
     </div>
   );
 };

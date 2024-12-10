@@ -14,7 +14,7 @@
   justify-content: space-around;
 }
 
-.LoginTable-container h2 {
+.login-container h2 {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -34,7 +34,7 @@
   box-sizing: border-box;
 }
 
-.LoginTable-button {
+.login-button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -44,11 +44,11 @@
   cursor: pointer;
 }
 
-.LoginTable-button:hover {
+.login-button:hover {
   background-color: #0056b3;
 }
 
-.LoginTable-container p {
+.login-container p {
   text-align: center;
   margin-top: 20px;
 }
