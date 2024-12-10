@@ -5,14 +5,8 @@ const postSchema = new mongoose.Schema({
   content: String,
   creator_id: String,
   creator_name: String,
-  rating: Number,
-  rates: [
-    {
-      creator_id: String,
-      creator_name: String,
-      content: String,
-    },
-  ],
+  tot_rating: Number,
+  tot_rates: Number,
 });
 
 module.exports = mongoose.model("post", postSchema);

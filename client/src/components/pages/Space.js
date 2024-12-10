@@ -8,63 +8,56 @@ import "./Space.css";
 const Test = {
   name: "test",
   id: "123",
-  description: "I am allergic to cats",
+  description: "我爱玩原神",
 };
-
 const Space = (props) => {
-  const [catHappiness, setCatHappiness] = useState(0);
-  const [user, setUser] = useState();
-
+  const [user_name, setUser_name] = useState("");
+  const [user_email, setUser_email] = useState("");
   useEffect(() => {
-    document.title = "Space Page";
+    if (props.user) {
+      setUser_name(props.user.name);
+      setUser_email(props.user.email);
+    }
     // get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
   }, []);
-
-  const incrementCatHappiness = () => {
-    setCatHappiness(catHappiness + 1);
-  };
 
   // if (!user) {
   //   return <div> Loading! </div>;
   // }
+  console.log("user_name", user_name);
+
   return (
     <div className="SpaceAll">
       <div className="Space-profileContainer">
-        <div
-          className="Space-avatarContainer"
-          onClick={() => {
-            incrementCatHappiness();
-          }}
-        >
-          <div className="Space-avatar" />
+        <div className="Space-avatarContainer">
+          <div className="Space-avatar-placeholder">👤</div>
         </div>
 
-        <h1 className="Space-name u-textCenter">{Test.name}</h1>
+        <h1 className="Space-name u-textCenter">{user_name}</h1>
         <hr className="Space-linejj" />
         <div className="Space-infoContainer">
           <div className="Space-subContainer u-textCenter">
-            <h4 className="Space-subTitle">About Me</h4>
+            <h4 className="Space-subTitle">我的邮箱</h4>
             <div id="Space-description">
-              I am really allergic to cats i don't know why i have a catbook
+              {user_email}
+              {/* {user.description} */}
             </div>
           </div>
           <div className="Space-subContainer u-textCenter">
-            <h4 className="Space-subTitle">Cat Happiness</h4>
-            {/* <CatHappiness catHappiness={catHappiness} /> */}
+            <h4 className="Space-subTitle">个人名言</h4>
+            <div id="Space-description">{Test.description}</div>
           </div>
           <div className="Space-subContainer u-textCenter">
-            <h4 className="Space-subTitle">My Favorite Type of Cat</h4>
-            <div id="favorite-cat">corgi</div>
+            <h4 className="Space-subTitle">座右铭</h4>
+            <div id="favorite-cat">愿此行，终抵群星</div>
           </div>
         </div>
-      </div> 
+      </div>
       <div className="content">
-        <div className="myPublish">
-        </div>
+        <div className="myPublish">这里是你发布过的内容</div>
         <hr></hr>
-        <div className="myComment">
-        </div>
-      </div>    
+        <div className="myComment">这你是你评论过的帖子</div>
+      </div>
     </div>
   );
 };

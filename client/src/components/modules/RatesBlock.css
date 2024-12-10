@@ -1,0 +1,13 @@
+.Card-rateSection {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.post-rates {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}

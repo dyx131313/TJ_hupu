@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SinglePost from "./SinglePost";
 import "./Card.css";
 
 const Card = (props) => {
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    setPost(props.post);
+  }, [props.post]);
+
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/detail");
+    navigate(`/detail/${post._id}`);
   };
 
   return (
     <div className="Card-container" onClick={handleClick}>
       <div>
-        <SinglePost
-          _id={props._id}
-          creator_name={props.creator_name}
-          creator_id={props.creator_id}
-          content={props.content}
-          rating={props.rating}
-          contents={props.contents}
-          rates_length={props.rates_length}
-          //hot_rate={props.rates[0].content}
-        />
+        <SinglePost post={post} />
       </div>
     </div>
   );

@@ -1,111 +1,238 @@
-.Space-profileContainer {
-  width: 500px;
-  height: 1100px;
-  border: 10px solid transparent;
-  backdrop-filter: blur(10px) brightness(90%);
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px
-}
+/* Space.css */
 
-.Space-avatarContainer {
-  padding: 0 35%;
-}
-
-@keyframes borderAnimation2  {
-  to {
-    background-position: 100%;
-  }
-}
-.Space-avatar {
-  /* make it responsive */
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  display: block;
-  /* div height to be the same as width*/
-  padding-top: 100%;
-
-  /* make it a circle */
-  border-radius: 50%;
-
-  /* Centering on image`s center*/
-  background-position-y: center;
-  background-position-x: center;
-  background-repeat: no-repeat;
-
-  /* it makes the clue thing, takes smaller dimension to fill div */
-  background-size: cover;
-
-  /* it is optional, for making this div centered in parent*/
-  margin: 0 auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("../../public/corgi.jpg");
-}
-
-.Space-name {
-  font-size: 25px;
-  font-weight: 300;
-}
-
-.Space-line {
-  border-color: var(--grey);
-}
-
-.Space-infoContainer {
-  display: flex;
-  flex-direction: column;
-  padding: var(--m);
-}
-
-.Space-subContainer {
-  /* flex-grow: 1; */
-  flex-basis: auto;
-}
-
-.Space-subContainer + .Space-subContainer {
-  margin-bottom: var(--m);
-}
-
-.Space-subTitle {
-  font-weight: 300;
-  font-size: 24px;
-  margin: var(--m) var(--s);
-}
-
-.content {
-  border-left : 5px dotted rgb(102, 102, 102);
-  margin-left: 50px;
-  width: 1100px;
-  display: flex;
-  flex-direction: column;
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --background-color: #f5f7fa;
+  --white: #ffffff;
+  --grey: #ecf0f1;
+  --text-color: #2c3e50;
+  --subtext-color: #7f8c8d;
+  --border-radius: 15px;
+  --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --hover-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  --transition-speed: 0.3s;
+  --gap: 40px;
+  --padding: 20px;
+  --avatar-size: 150px;
 }
 
 .SpaceAll {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: var(--m);
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--padding);
+  gap: var(--gap);
+  background-color: var(--background-color);
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-.myPublish {
-  height : 45%;
-  width: 90%;
-  margin-left :  50px;
-  margin-bottom: 50px;
-  border: 10px solid;
-  border-image: linear-gradient(45deg, #ffffff, #dbdbdb) 1;
-  clip-path: inset(0 round 10px);
+.Space-profileContainer {
+  width: 100%;
+  max-width: 350px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
 }
 
+.Space-avatarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform var(--transition-speed) ease;
+}
+
+.Space-avatarContainer:hover {
+  transform: scale(1.05);
+}
+
+.Space-avatarContainer:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.Space-avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 5px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: border-color var(--transition-speed) ease;
+}
+
+.Space-avatarContainer:hover .Space-avatar {
+  border-color: var(--secondary-color);
+}
+
+.Space-avatarContainer:focus .Space-avatar {
+  border-color: var(--primary-color);
+}
+
+.Space-name {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.Space-line {
+  border: none;
+  border-top: 2px solid var(--grey);
+  margin: 20px 0;
+}
+
+.Space-infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.Space-subContainer {
+  background: var(--white);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow var(--transition-speed) ease;
+}
+
+.Space-subContainer:hover {
+  box-shadow: var(--hover-box-shadow);
+}
+
+.Space-subContainer:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.Space-subTitle {
+  font-weight: 500;
+  font-size: 20px;
+  color: #34495e;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--grey);
+  padding-bottom: 5px;
+}
+
+#Space-description,
+#favorite-cat {
+  font-size: 16px;
+  color: var(--subtext-color);
+  line-height: 1.5;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.myPublish,
 .myComment {
-  height : 45%;
-  width: 90%;
-  margin-left :  50px;
-  margin-bottom: 50px;
-  border: 10px solid;
-  border-image: linear-gradient(45deg, #ffffff, #dbdbdb) 1;
-  clip-path: inset(0 round 10px);
+  flex: 1;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: border var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.myPublish:hover,
+.myComment:hover {
+  border: 2px solid var(--primary-color);
+  box-shadow: var(--hover-box-shadow);
+}
+
+.myPublish:focus,
+.myComment:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+  .SpaceAll {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Space-profileContainer {
+    max-width: 300px;
+  }
+
+  .content {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .SpaceAll {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Space-profileContainer {
+    max-width: 100%;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .myPublish,
+  .myComment {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .Space-profileContainer {
+    padding: 15px;
+  }
+
+  .Space-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .Space-name {
+    font-size: 24px;
+  }
+
+  .Space-subTitle {
+    font-size: 18px;
+  }
+
+  #Space-description,
+  #favorite-cat {
+    font-size: 14px;
+  }
+
+  .myPublish,
+  .myComment {
+    padding: 15px;
+  }
+}
+
+.Space-avatar-placeholder {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  background: var(--grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
 }
