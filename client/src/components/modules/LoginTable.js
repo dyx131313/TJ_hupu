@@ -26,6 +26,7 @@ const LoginTable = (props) => {
   };
 
   return (
+    <div className="loginAll">
     <div className="login-container">
       <h2>用户登录</h2>
       <form onSubmit={handleSubmit}>
@@ -59,6 +60,29 @@ const LoginTable = (props) => {
         还没有账户? <Link to="/signup">注册</Link>
       </p>
     </div>
+        <div class="square">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="circle">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      <div>
+        <img src="https://img1.qunarzz.com/travel/d6/1809/6c/39617891be657fb5.jpg" alt="logo" id = "PicTJ" />
+      </div> 
+        
+      </div>
   );
 };
 

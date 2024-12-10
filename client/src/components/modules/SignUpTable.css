@@ -1,10 +1,16 @@
 .signup-container {
-  max-width: 400px;
-  margin: 0 auto;
+  width: 400px;
+  height: 466px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background: linear-gradient(-180deg, #bcc5ce 0%, #929ead 98%),
+    radial-gradient(at top left, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background-blend-mode: screen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .signup-container h2 {
@@ -154,4 +160,15 @@ ul li {
     bottom: 90vh;
     border-radius: 50%;
   }
+}
+
+.signupAll {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#PicTJ {
+  width: 500px;
+  height: 500px;
 }

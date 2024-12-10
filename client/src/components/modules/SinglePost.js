@@ -13,7 +13,7 @@ import "./SinglePost.css";
  */
 const SinglePost = (props) => {
   return (
-    <>
+    <div className="SinglePost">
       <div className="Card-post">
         <div className="SinglePost-Post">
           {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold"> */}
@@ -26,8 +26,8 @@ const SinglePost = (props) => {
           <p>{props.rates_length}</p>
         </div>
       </div>
-      {props.hot_rate ? <p>Hot Rate: {props.hot_rate}</p> : null}
-    </>
+      {props.hot_rate ? <p className="hotRate">Hot Rate: {props.hot_rate}</p> : null}
+    </div>
   );
 };
 

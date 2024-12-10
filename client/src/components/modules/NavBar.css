@@ -1,6 +1,9 @@
 /* ./modules/NavBar.css */
 /* ./modules/NavBar.css */
-
+@font-face {
+  font-family: "MyFont";
+  src: url("../../public/HanaleiFill-Regular.ttf");
+}
 :root {
   --primary: #4a90e2;
   --white: #ffffff;
@@ -41,11 +44,12 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--white);
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 50px;
+  font-weight: 400;
   line-height: 1.5;
   display: inline-block;
   vertical-align: middle;
+  font-family: MyFont;
 }
 
 .NavBar-linkContainer {

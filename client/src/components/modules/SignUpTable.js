@@ -40,9 +40,10 @@ const SignUpTable = () => {
   };
 
   return (
+    <div className="signupAll">
     <div className="signup-container">
       <h2>用户注册</h2>
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">用户名</label>
           <input
@@ -53,19 +54,19 @@ const SignUpTable = () => {
             onChange={handleChange}
             required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">邮箱</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">邮箱</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
           <label>密码</label>
           <div className="password-container">
             <input
@@ -112,6 +113,28 @@ const SignUpTable = () => {
       <p>
         已经拥有账户? <Link to="/login">登录</Link>
       </p>
+        <div class="square">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="circle">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <img src="https://img1.qunarzz.com/travel/d6/1809/6c/39617891be657fb5.jpg" alt="logo" id = "PicTJ" />
+      </div>
     </div>
   );
 };

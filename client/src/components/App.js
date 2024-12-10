@@ -60,7 +60,8 @@ const App = () => {
         console.error("Error logging out:", err);
       });
   };
-
+  const location = useLocation(); // 获取当前路径、
+  const isSignUpPage = (location.pathname === "/SignUp" || location.pathname === "/LogIn");
   return (
     <div className="App">
       <NavBar userId={userId} handleLogout={handleLogout} />

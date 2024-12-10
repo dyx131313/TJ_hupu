@@ -1,10 +1,17 @@
-.login-container {
-  max-width: 400px;
+.LoginTable-container {
+  width: 400px;
+  height: 466px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background: linear-gradient(-180deg, #bcc5ce 0%, #929ead 98%),
+    radial-gradient(at top left, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background-blend-mode: screen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .login-container h2 {
@@ -44,4 +51,100 @@
 .login-container p {
   text-align: center;
   margin-top: 20px;
+}
+
+ul li {
+  position: absolute;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  list-style: none;
+  opacity: 0;
+}
+
+.square li {
+  top: 40vh;
+  left: 90vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(2) {
+  top: 80vh;
+  left: 10vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(3) {
+  top: 80vh;
+  left: 85vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(4) {
+  top: 10vh;
+  left: 70vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(5) {
+  top: 10vh;
+  left: 10vw;
+  animation: square 10s linear infinite;
+}
+
+.circle li {
+  bottom: 0;
+  left: 15vw;
+  animation: circle 10s linear infinite;
+}
+
+.circle li:nth-child(2) {
+  left: 35vw;
+  animation-delay: 2s;
+}
+
+.circle li:nth-child(3) {
+  left: 55vw;
+  animation-delay: 4s;
+}
+
+.circle li:nth-child(4) {
+  left: 75vw;
+  animation-delay: 6s;
+}
+
+.circle li:nth-child(5) {
+  left: 90vw;
+  animation-delay: 8s;
+}
+
+@keyframes square {
+  0% {
+    transform: scale(0) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(5) rotateY(1000deg);
+    opacity: 0;
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: scale(0) rotateY(0deg);
+    opacity: 1;
+    bottom: 0;
+    border-radius: 0;
+  }
+  100% {
+    transform: scale(5) rotateY(1000deg);
+    opacity: 0;
+    bottom: 90vh;
+    border-radius: 50%;
+  }
+}
+
+.loginAll {
+  display: flex;
 }
