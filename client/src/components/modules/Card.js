@@ -19,9 +19,9 @@ const Card = (props) => {
           content={props.content}
           rating={props.rating}
           contents={props.contents}
-          rates_length={props.rates.length}
+          rates_length={props.rates_length}
           //hot_rate={props.rates[0].content}
-        />        
+        />
       </div>
     </div>
   );

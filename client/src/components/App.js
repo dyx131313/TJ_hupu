@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom"; // 导入 useNavigate
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom"; // 导入 useNavigate 和 useLocation
 
 import NotFound from "./pages/NotFound.js";
 
@@ -24,21 +24,24 @@ import LogOut from "./modules/LogOut.js";
 const App = () => {
   const [userId, setUserId] = useState(undefined);
   const navigate = useNavigate(); // 使用 useNavigate
+  const location = useLocation(); // 使用 useLocation
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
-        // they are registered in the database, and currently logged in.
+        // 用户已登录，更新 userId 状态
         setUserId(user._id);
       }
     });
-  });
+  }, [location]); // 依赖项数组包含 location，表示在 location 变化时触发
 
   const handleLogin = (formData) => {
     console.log("app login", formData);
     post("/api/login", formData)
       .then((response) => {
         console.log("User logged in:", response);
+        // 更新 userId 状态
+        setUserId(response.userId);
         // 重定向到主页
         navigate("/");
       })
@@ -54,14 +57,13 @@ const App = () => {
       .then(() => {
         console.log("User logged out");
         // 重定向到登录页面
-        navigate("/");
+        navigate("/login");
       })
       .catch((err) => {
         console.error("Error logging out:", err);
       });
   };
-  const location = useLocation(); // 获取当前路径、
-  const isSignUpPage = (location.pathname === "/SignUp" || location.pathname === "/LogIn");
+
   return (
     <div className="App">
       <NavBar userId={userId} handleLogout={handleLogout} />

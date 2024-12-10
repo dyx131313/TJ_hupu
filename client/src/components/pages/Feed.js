@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Card from "../modules/Card.js";
 import { NewPost } from "../modules/NewPostInput.js";
 import { get } from "../../utilities";
-import "./Feed.css"
+import SinglePost from "../modules/SinglePost.js";
+import "./Feed.css";
 const test_Post = {
   _id: "123",
   creator_name: "test",
@@ -42,14 +43,15 @@ const Feed = (props) => {
   }, []);
 
   const PostsList = Posts.map((post) => (
-    <SinglePost
+    <Card
       key={post._id}
       _id={post._id}
       creator_name={post.creator_name}
       creator_id={post.creator_id}
       content={post.content}
       rating={post.rating}
-      rates_length={post.rates.length}
+      // rates_length={post.rates.length}
+      rates_length={0}
       hot_rate={post.hot_rate}
     />
   ));
