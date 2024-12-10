@@ -33,6 +33,7 @@ const SignUpTable = () => {
     post("/api/signup", formData)
       .then((user) => {
         console.log("User signed up:", user);
+        alert("注册成功");
       })
       .catch((err) => {
         console.error("Error signing up:", err);
