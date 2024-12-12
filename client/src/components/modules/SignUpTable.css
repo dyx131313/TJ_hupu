@@ -94,3 +94,11 @@
   width: 500px;
   height: 500px;
 }
+
+#name {
+  width: 90%;
+}
+
+#email {
+  width: 90%;
+}

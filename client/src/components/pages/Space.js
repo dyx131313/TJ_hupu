@@ -61,7 +61,6 @@ const Space = (props) => {
           </div>
         </div>
       </div>
-      </div>
       <div className="content">
         <div className="myPublish">
           <p>发布的帖子</p>

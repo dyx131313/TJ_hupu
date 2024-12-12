@@ -19,9 +19,6 @@ const NavBar = (props) => {
     <nav className="NavBar-container">
       <img className="NavBar-logo" src={logo} alt="TJ hupu logo" />
       <div className="NavBar-linkContainer u-inlineBlock">
-        <Link to="/create" className="NavBar-link">
-          发布
-        </Link>
         <Link to="/" className="NavBar-link">
           主页
         </Link>

@@ -45,12 +45,14 @@ const SignUpTable = () => {
   };
 
   return (
-    <div className="signupAll">
-      <div className="signup-container">
+    <div className="signup-container">
+      <div className="signup-form">
         <h2>用户注册</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">用户名</label>
+            <label htmlFor="username" className="usercontainer">
+              用户名
+            </label>
             <input
               type="text"
               id="name"
@@ -58,6 +60,7 @@ const SignUpTable = () => {
               value={formData.name}
               onChange={handleChange}
               required
+              placeholder="请输入用户名"
             />
           </div>
           <div className="form-group">
@@ -84,6 +87,7 @@ const SignUpTable = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
+                placeholder="请输入要设置的密码"
               />
               <button
                 type="button"
@@ -104,6 +108,7 @@ const SignUpTable = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
+                placeholder="请输入相同的密码"
               />
               <button
                 type="button"
@@ -121,31 +126,6 @@ const SignUpTable = () => {
         <p>
           已经拥有账户? <Link to="/login">登录</Link>
         </p>
-        <div class="square">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-        <div class="circle">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <img
-          src="https://img1.qunarzz.com/travel/d6/1809/6c/39617891be657fb5.jpg"
-          alt="logo"
-          id="PicTJ"
-        />
       </div>
     </div>
   );
