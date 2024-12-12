@@ -1,21 +1,7 @@
 import React from "react";
 import SingleRate from "./SingleRate.js";
-import { NewComment } from "./NewPostInput.js";
+import "./RatesBlock.css";
 
-/**
- * @typedef ContentObject
- * @property {string} _id of post/rate
- * @property {string} creator_name
- * @property {string} content of the post/rate
- */
-
-/**
- * Component that holds all the rates for a post
- *
- * Proptypes
- * @param {ContentObject[]} rates
- * @param {ContentObject} post
- */
 const RatesBlock = (props) => {
   return (
     <div className="Card-rateSection">

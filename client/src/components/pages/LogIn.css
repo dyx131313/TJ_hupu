@@ -7,59 +7,28 @@
 }
 
 .logindisplay-container {
-  margin-top: 10%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 20%;
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 15%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  height: 600px;
+  align-items: stretch; /* 使子元素高度相同 */
 }
 
 .logintable-container {
-  height: 100%;
-  width: 30%;
-}
-
-.square ul,
-.circle ul {
+  flex: 3; /* 占用 3 份空间 */
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  padding: 0;
-}
-
-.square li,
-.circle li {
-  width: 8px;
-  height: 8px;
-  margin: 5px;
-  list-style: none;
-  background-color: #007bff;
-  opacity: 0.7;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.square li:hover,
-.circle li:hover {
-  transform: scale(1.2);
-  opacity: 1;
-}
-
-.square li {
-  border-radius: 5px;
-}
-
-.circle li {
-  border-radius: 50%;
+  flex-direction: column;
+  justify-content: center; /* 垂直居中对齐内容 */
 }
 
 .logo-container {
-  margin-top: 20px;
-  width: 70%;
-  text-align: center;
+  flex: 7; /* 占用 7 份空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直居中对齐内容 */
 }
 .logo-container img {
   width: 100%;
@@ -70,4 +39,95 @@
 }
 .logo-container img:hover {
   transform: scale(1.1);
+}
+ul li {
+  position: absolute;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  list-style: none;
+  opacity: 0;
+}
+
+.square li {
+  top: 40vh;
+  left: 90vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(2) {
+  top: 80vh;
+  left: 10vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(3) {
+  top: 80vh;
+  left: 85vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(4) {
+  top: 10vh;
+  left: 70vw;
+  animation: square 10s linear infinite;
+}
+
+.square li:nth-child(5) {
+  top: 10vh;
+  left: 10vw;
+  animation: square 10s linear infinite;
+}
+
+.circle li {
+  bottom: 0;
+  left: 15vw;
+  animation: circle 10s linear infinite;
+}
+
+.circle li:nth-child(2) {
+  left: 35vw;
+  animation-delay: 2s;
+}
+
+.circle li:nth-child(3) {
+  left: 55vw;
+  animation-delay: 4s;
+}
+
+.circle li:nth-child(4) {
+  left: 75vw;
+  animation-delay: 6s;
+}
+
+.circle li:nth-child(5) {
+  left: 90vw;
+  animation-delay: 8s;
+}
+
+@keyframes square {
+  0% {
+    transform: scale(0) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(5) rotateY(1000deg);
+    opacity: 0;
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: scale(0) rotateY(0deg);
+    opacity: 1;
+    bottom: 0;
+    border-radius: 0;
+  }
+  100% {
+    transform: scale(5) rotateY(1000deg);
+    opacity: 0;
+    bottom: 90vh;
+    border-radius: 50%;
+  }
 }

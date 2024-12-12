@@ -3,28 +3,60 @@ const router = express.Router();
 const Post = require("./models/post"); // 确保正确导入 Post 模型
 const User = require("./models/user"); // 确保正确导入 User 模型
 
+// 以下是 API 路由
 router.get("/posts", (req, res) => {
-  Post.find({})
-    .then((posts) => {
-      res.send(posts);
+  if (req.query.ids) {
+    const ids = req.query.ids.split(",");
+    Post.find({
+      _id: { $in: ids },
+    })
+      .then((posts) => {
+        res.send(posts);
+      })
+      .catch((err) => {
+        console.error("Error fetching posts:", err);
+        res.status(500).send("Internal Server Error");
+      });
+  } else {
+    Post.find({})
+      .then((posts) => {
+        res.send(posts);
+      })
+      .catch((err) => {
+        console.error("Error fetching posts:", err);
+        res.status(500).send("Internal Server Error");
+      });
+  }
+});
+
+router.get("/posts/:postId/rates", (req, res) => {
+  const { postId } = req.params;
+  Rate.find({ parent_id: postId })
+    .then((rates) => {
+      res.send(rates);
     })
     .catch((err) => {
-      console.error("Error fetching posts:", err);
+      console.error("Error fetching rates:", err);
       res.status(500).send("Internal Server Error");
     });
 });
 
-router.post("/post", (req, res) => {
+router.post("/posts/post", (req, res) => {
   const newPost = new Post({
     title: req.body.title,
     content: req.body.content,
-    creator_id: req.user ? req.user._id : null,
-    creator_name: req.user ? req.user.name : "Anonymous",
-    rating: req.body.rating || 0,
-    rates: [],
+    creator_id: req.body.creator_id,
+    creator_name: req.body.creator_name,
+    tot_rates: 0,
+    tot_rating: 0,
+    star_ratings: [
+      { stars: 1, count: 0 },
+      { stars: 2, count: 0 },
+      { stars: 3, count: 0 },
+      { stars: 4, count: 0 },
+      { stars: 5, count: 0 },
+    ],
   });
-
-  console.log("Creating new post:", newPost);
 
   newPost
     .save()
@@ -33,6 +65,73 @@ router.post("/post", (req, res) => {
     })
     .catch((err) => {
       console.error("Error saving post:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+router.post("/posts/:postId/rate", (req, res) => {
+  const { postId } = req.params;
+  const newRate = new Rate({
+    content: req.body.content,
+    creator_id: req.body.creator_id,
+    creator_name: req.body.creator_name,
+    rating: req.body.rating,
+    parent_id: postId,
+  });
+
+  newRate
+    .save()
+    .then((rate) => {
+      res.send(rate);
+    })
+    .catch((err) => {
+      console.error("Error saving rate:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+router.post("/posts/:postId/update", async (req, res) => {
+  const { postId } = req.params;
+  Post.findById(postId)
+    .then((post) => {
+      let past_rating = post.tot_rating;
+      let past_rates = post.tot_rates;
+      post.tot_rates = past_rates + 1;
+      post.tot_rating = past_rating + req.body.rating;
+      let past_star_ratings = post.star_ratings;
+      post.star_ratings = past_star_ratings.map((star_rating) => {
+        if (star_rating.stars * 2 === req.body.rating) {
+          star_rating.count += 1;
+        }
+        return star_rating;
+      });
+      post
+        .save()
+        .then((post) => {
+          res.send(post);
+        })
+        .catch((err) => {
+          console.error("Error updating post:", err);
+          res.status(500).send("Internal Server Error");
+        });
+    })
+    .catch((err) => {
+      console.error("Error finding post:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+router.get("/posts/:postId", (req, res) => {
+  const { postId } = req.params;
+  Post.findById(postId)
+    .then((post) => {
+      if (!post) {
+        return res.status(404).send("Post not found");
+      }
+      res.send(post);
+    })
+    .catch((err) => {
+      console.error("Error fetching post:", err);
       res.status(500).send("Internal Server Error");
     });
 });
@@ -86,6 +185,53 @@ router.post("/logout", (req, res) => {
     }
     res.send({ msg: "Logout successful" });
   });
+});
+
+router.get("/users/:userId", (req, res) => {
+  const { userId } = req.params;
+  User.findById(userId)
+    .then((user) => {
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+      res.send(user);
+    })
+    .catch((err) => {
+      console.error("Error fetching user:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+router.get("/users/:userId/posts", (req, res) => {
+  const { userId } = req.params;
+  Post.find({ creator_id: userId })
+    .then((posts) => {
+      res.send(posts);
+    })
+    .catch((err) => {
+      console.error("Error fetching posts:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+const selectPostbyrateid = (rates) => {
+  return Promise.all(
+    rates.map((rate) => {
+      return Post.findById(rate.parent_id);
+    })
+  );
+};
+
+router.get("/users/:userId/rates", (req, res) => {
+  const { userId } = req.params;
+  Rate.find({ creator_id: userId })
+    .then((rates) => {
+      res.send(rates);
+    })
+    .catch((err) => {
+      console.error("Error fetching rates:", err);
+      res.status(500).send("Internal Server Error");
+    });
 });
 
 // 验证用户是否已登录的中间件

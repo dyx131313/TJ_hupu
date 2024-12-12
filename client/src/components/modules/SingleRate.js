@@ -11,6 +11,20 @@ import { Link } from "react-router-dom";
  * @param {string} content of the rate
  */
 const SingleRate = (props) => {
+  const { creator_name, content, rating } = props;
+
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 2; i <= 10; i += 2) {
+      stars.push(
+        <span key={i} className={i <= rating ? "star filled" : "star"}>
+          ★
+        </span>
+      );
+    }
+    return stars;
+  };
+
   return (
     <div className="Card-rateBody">
       {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold">

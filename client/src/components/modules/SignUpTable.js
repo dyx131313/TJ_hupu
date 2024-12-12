@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignUpTable.css";
 import { post } from "../../utilities";
+import { useNavigate } from "react-router-dom";
 
 const SignUpTable = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ const SignUpTable = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +36,8 @@ const SignUpTable = () => {
     post("/api/signup", formData)
       .then((user) => {
         console.log("User signed up:", user);
+        alert("注册成功");
+        navigate("/");
       })
       .catch((err) => {
         console.error("Error signing up:", err);
@@ -41,19 +46,19 @@ const SignUpTable = () => {
 
   return (
     <div className="signupAll">
-    <div className="signup-container">
-      <h2>用户注册</h2>
+      <div className="signup-container">
+        <h2>用户注册</h2>
         <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">用户名</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+          <div className="form-group">
+            <label htmlFor="username">用户名</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="email">邮箱</label>
@@ -67,52 +72,52 @@ const SignUpTable = () => {
             />
           </div>
           <div className="form-group">
-          <label>密码</label>
-          <div className="password-container">
-            <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <button
-              type="button"
-              className="toggle-password"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? "隐藏" : "显示"}
-            </button>
+            <label>密码</label>
+            <div className="password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "隐藏" : "显示"}
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="form-group">
-          <label>确认密码</label>
-          <div className="password-container">
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-            <button
-              type="button"
-              className="toggle-password"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            >
-              {showConfirmPassword ? "隐藏" : "显示"}
-            </button>
+          <div className="form-group">
+            <label>确认密码</label>
+            <div className="password-container">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? "隐藏" : "显示"}
+              </button>
+            </div>
           </div>
-        </div>
-        <button type="submit" className="signup-button">
-          注册
-        </button>
-      </form>
-      <p>
-        已经拥有账户? <Link to="/login">登录</Link>
-      </p>
+          <button type="submit" className="signup-button">
+            注册
+          </button>
+        </form>
+        <p>
+          已经拥有账户? <Link to="/login">登录</Link>
+        </p>
         <div class="square">
           <ul>
             <li></li>
@@ -133,7 +138,11 @@ const SignUpTable = () => {
         </div>
       </div>
       <div>
-        <img src="https://img1.qunarzz.com/travel/d6/1809/6c/39617891be657fb5.jpg" alt="logo" id = "PicTJ" />
+        <img
+          src="https://img1.qunarzz.com/travel/d6/1809/6c/39617891be657fb5.jpg"
+          alt="logo"
+          id="PicTJ"
+        />
       </div>
     </div>
   );

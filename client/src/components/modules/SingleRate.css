@@ -1,0 +1,40 @@
+.Card-rateBody {
+  padding: 10px;
+  /* max-width: 100%; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.rate-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.rate-creator {
+  font-weight: bold;
+}
+
+.rate-stars {
+  display: flex;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ccc;
+}
+
+.star.filled {
+  color: #ffcc00;
+}
+
+.rate-content {
+  margin-top: 5px;
+  font-size: 2rem;
+}

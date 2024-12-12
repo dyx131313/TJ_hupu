@@ -1,61 +1,128 @@
-.SinglePost-container {
-  width: 100%;
+.SinglePost {
+  margin: 2%;
+  margin-right: 4%;
+  margin-left: 4%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.SinglePost-top {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  background-color: white;
+  align-items: center;
+}
+
+.SinglePost-bottom {
+  display: flex;
+  flex-direction: column;
 }
 
 .SinglePost-Post {
-  flex: 1;
+  width: 70%;
+  margin: 0;
+}
+
+.SinglePost-PostTitle {
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #333;
 }
 
 .SinglePost-PostCreator {
-  font-size: 16px;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 15px;
+  margin-left: 5px;
+  margin-bottom: 0;
+}
+
+.SinglePost-rate {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SinglePost-averageRating {
+  background-color: #ffcc00;
+  margin: 0;
+  padding: 8%;
+  /* padding: 20px; */
+  border-radius: 5px;
+  border: 2px solid black;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: var(--s);
+  color: #333;
+}
+
+.SinglePost-totalRates {
+  margin-top: 10px;
+  /* color: blue;  */
 }
 
 .SinglePost-PostContent {
-  font-size: 18px;
-  margin-bottom: var(--m);
+  margin-top: 20px;
+  font-size: 1.4rem;
+  color: #333;
 }
 
-.SinglePost-rating {
+.SinglePost-starRatings {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  font-size: 14px;
-  color: var(--black);
 }
 
-.hotRate {
-  font-weight: 900;
-  text-shadow: 0 1px hsl(0, 0%, 85%),
-  0 1px hsl(0, 0%, 80%),
-  0 1px hsl(0, 0%, 75%),
-  0 1px hsl(0, 0%, 70%),
-  0 1px hsl(0, 0%, 65%),
-  0 5px 10px black;
-  position: relative;
-  width: auto;
-  height: auto;
-  background: linear-gradient(-150deg, transparent 1.5em, #f7acac 0);
-  border-radius: .5em;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .4)) 100% 0 no-repeat;
-    width: 1.73em;
-    height: 3em;
-    transform: translateY(-1.3em) rotate(-30deg);
-    transform-origin: bottom right;
-    border-bottom-left-radius: inherit;
-    box-shadow: -.2em .2em .3em -.1em rgba(0, 0, 0, .15);
-  }
+.SinglePost-starRatingBar {
+  flex-grow: 1;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin: 0 10px;
+  overflow: hidden;
 }
+
+.SinglePost-starRatingBarFill {
+  height: 100%;
+  background-color: #ffcc00;
+  border-radius: 5px;
+}
+
+.SinglePost-starRatingCount {
+  font-weight: bold;
+  color: #333;
+}
+
+.SinglePost-starRating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.SinglePost-starRatingStars {
+  width: 50px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* .hotRate {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+} */
 
 .SinglePost {
   width: 90%;

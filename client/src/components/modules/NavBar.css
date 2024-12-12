@@ -58,6 +58,10 @@
   gap: var(--m);
 }
 
+.NavBar-link {
+  font-size: 1;
+}
+
 .NavBar-link,
 .NavBar-link:visited {
   color: var(--white);

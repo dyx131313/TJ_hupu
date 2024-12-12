@@ -1,0 +1,125 @@
+/* Create.css */
+
+/* 全局容器样式 */
+.Create-container {
+  margin: 2%;
+  margin-right: 4%;
+  margin-left: 4%;
+  padding: 25px; /* 内边距 */
+  background-color: #ffffff; /* 背景颜色 */
+  border: 1px solid #e0e0e0; /* 边框颜色 */
+  border-radius: 10px; /* 圆角 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 更深的阴影效果 */
+}
+
+/* 标题样式 */
+.Create-container h1 {
+  text-align: center; /* 居中对齐 */
+  margin-bottom: 25px; /* 下外边距 */
+  color: #2c3e50; /* 文字颜色 */
+  font-size: 3rem;
+}
+
+/* 表单样式 */
+.Create-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 表单组样式 */
+.Create-formGroup {
+  margin-bottom: 20px; /* 下外边距 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 标签样式 */
+.Create-formGroup label {
+  margin-bottom: 8px; /* 下外边距 */
+  font-weight: 600; /* 加粗 */
+  color: #34495e; /* 文字颜色 */
+  font-size: 2rem;
+}
+
+/* 输入框、选择框和文本域样式 */
+.Create-formGroup input,
+.Create-formGroup textarea,
+.Create-formGroup select {
+  width: 100%; /* 宽度100% */
+  padding: 12px 15px; /* 内边距 */
+  border: 1px solid #ccc; /* 边框颜色 */
+  border-radius: 6px; /* 圆角 */
+  box-sizing: border-box; /* 包括内边距和边框在内的宽度计算 */
+  transition: border-color 0.3s, box-shadow 0.3s; /* 过渡效果 */
+  background-color: #fafafa; /* 背景颜色 */
+}
+
+/* 选择框的特定样式 */
+.Create-formGroup select {
+  appearance: none; /* 移除默认样式 */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath fill='%23999' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px 7px;
+}
+
+/* 输入框聚焦时的样式 */
+.Create-formGroup input:focus,
+.Create-formGroup textarea:focus,
+.Create-formGroup select:focus {
+  border-color: #3498db; /* 边框颜色 */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* 阴影效果 */
+  outline: none; /* 去除默认的轮廓 */
+}
+
+.Create-formGroup input {
+  font-size: 1.2rem;
+}
+
+/* 文本域样式 */
+.Create-formGroup textarea {
+  resize: vertical; /* 只能垂直调整大小 */
+  min-height: 250px; /* 最小高度 */
+  font-size: 1.2rem;
+}
+
+/* 提交按钮样式 */
+.Create-submit {
+  margin: 0 30%;
+  padding: 14px 25px; /* 内边距 */
+  background-color: #2980b9; /* 背景颜色 */
+  color: #fff; /* 文字颜色 */
+  border: none; /* 无边框 */
+  border-radius: 6px; /* 圆角 */
+  font-size: 1.5rem;
+  font-weight: bold; /* 加粗 */
+  cursor: pointer; /* 鼠标指针 */
+  transition: background-color 0.3s, transform 0.2s; /* 过渡效果 */
+  align-self: center; /* 居中对齐按钮 */
+  width: 100%; /* 按钮宽度100% */
+}
+
+/* 提交按钮悬停时的样式 */
+.Create-submit:hover {
+  background-color: #1f618d; /* 更深的背景颜色 */
+  transform: translateY(-2px); /* 微小的位移 */
+}
+
+/* 提交按钮按下时的样式 */
+.Create-submit:active {
+  background-color: #1a5276; /* 更深的背景颜色 */
+  transform: translateY(0); /* 还原位移 */
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  .Create-container {
+    padding: 20px; /* 减少内边距 */
+    margin: 20px; /* 减少外边距 */
+  }
+
+  .Create-submit {
+    padding: 12px 20px; /* 调整内边距 */
+    font-size: 16px; /* 调整字体大小 */
+  }
+}

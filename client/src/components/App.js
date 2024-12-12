@@ -71,10 +71,11 @@ const App = () => {
         <Route path="/" element={<Feed userId={userId} />} />
         <Route path="/login" element={<LogIn handleLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/Space" element={<Space userId={userId} />} />
-        <Route path="/detail" element={<Detail userId={userId} />} />
+        <Route path="/Space/:userId" element={<Space />} />
+        <Route path="/detail/:postId" element={<Detail user={cur_user} />} />
         <Route path="/create" element={<Create userId={userId} />} />
         <Route path="/logout" element={<LogOut handleLogout={handleLogout} />} />
+        <Route path="/create" element={<Create />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

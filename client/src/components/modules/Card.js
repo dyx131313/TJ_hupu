@@ -12,16 +12,7 @@ const Card = (props) => {
   return (
     <div className="Card-container" onClick={handleClick}>
       <div>
-        <SinglePost
-          _id={props._id}
-          creator_name={props.creator_name}
-          creator_id={props.creator_id}
-          content={props.content}
-          rating={props.rating}
-          contents={props.contents}
-          rates_length={props.rates_length}
-          //hot_rate={props.rates[0].content}
-        />
+        <SinglePost post={post} whether_detail={false} />
       </div>
     </div>
   );
