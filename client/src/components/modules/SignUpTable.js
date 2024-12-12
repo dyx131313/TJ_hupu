@@ -61,7 +61,9 @@ const SignUpTable = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">邮箱</label>
+            <label htmlFor="email" className="usercontainer">
+              邮箱
+            </label>
             <input
               type="email"
               id="email"
@@ -69,6 +71,7 @@ const SignUpTable = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              placeholder="请输入邮箱"
             />
           </div>
           <div className="form-group">

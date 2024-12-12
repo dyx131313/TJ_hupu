@@ -1,15 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./SingleRate.css";
 
-/**
- * Component to render a single rate
- *
- * Proptypes
- * @param {string} _id of rate
- * @param {string} creator_name
- * @param {string} creator_id
- * @param {string} content of the rate
- */
 const SingleRate = (props) => {
   const { creator_name, content, rating } = props;
 
@@ -27,10 +19,11 @@ const SingleRate = (props) => {
 
   return (
     <div className="Card-rateBody">
-      {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold">
-        {props.creator_name}
-      </Link> */}
-      <span>{" | " + props.content}</span>
+      <div className="rate-header">
+        <div className="rate-creator">{creator_name}</div>
+        <div className="rate-stars">{renderStars(rating)}</div>
+      </div>
+      <div className="rate-content">{content}</div>
     </div>
   );
 };

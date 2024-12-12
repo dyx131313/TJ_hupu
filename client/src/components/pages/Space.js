@@ -45,25 +45,22 @@ const Space = (props) => {
   return (
     <div className="SpaceAll">
       <div className="Space-profileContainer">
-        <div
-          className="Space-avatarContainer"
-          onClick={() => {
-            incrementCatHappiness();
-          }}
-        >
-          <div className="Space-avatar" />
+        <div className="Space-avatarContainer">
+          <div className="Space-avatar-placeholder">👤</div>
         </div>
 
-        <h1 className="Space-name u-textCenter">{Test.name}</h1>
+        <h1 className="Space-name u-textCenter">{user_name}</h1>
         <hr className="Space-linejj" />
         <div className="Space-infoContainer">
           <div className="Space-subContainer u-textCenter">
-            <h4 className="Space-subTitle">About Me</h4>
+            <h4 className="Space-subTitle">我的邮箱</h4>
             <div id="Space-description">
-              I am really allergic to cats i don't know why i have a catbook
+              {user_email}
+              {/* {user.description} */}
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div className="content">
         <div className="myPublish">

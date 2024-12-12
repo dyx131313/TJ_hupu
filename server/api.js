@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("./models/post"); // 确保正确导入 Post 模型
 const User = require("./models/user"); // 确保正确导入 User 模型
+const Rate = require("./models/rate"); // 确保正确导入 Rate 模型
 
 // 以下是 API 路由
 router.get("/posts", (req, res) => {

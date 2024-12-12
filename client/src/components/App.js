@@ -23,6 +23,8 @@ import LogOut from "./modules/LogOut.js";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [username, setUsername] = useState(undefined);
+  const [cur_user, setCur_user] = useState(undefined);
   const navigate = useNavigate(); // 使用 useNavigate
   const location = useLocation(); // 使用 useLocation
 
@@ -30,6 +32,7 @@ const App = () => {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // 用户已登录，更新 userId 状态
+        setCur_user(user);
         setUserId(user._id);
       }
     });
@@ -39,9 +42,9 @@ const App = () => {
     console.log("app login", formData);
     post("/api/login", formData)
       .then((response) => {
-        console.log("User logged in:", response);
         // 更新 userId 状态
         setUserId(response.userId);
+        setCur_user(response.user);
         // 重定向到主页
         navigate("/");
       })
@@ -53,6 +56,7 @@ const App = () => {
 
   const handleLogout = () => {
     setUserId(undefined);
+    setCur_user(undefined);
     post("/api/logout")
       .then(() => {
         console.log("User logged out");

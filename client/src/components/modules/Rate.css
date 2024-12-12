@@ -1,20 +1,13 @@
 .rate-container {
-  margin: 2%;
-  margin-right: 4%;
-  margin-left: 4%;
-  height: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #f9f9f9; /* 调整背景颜色 */
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.rate-bottom {
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .rate-form {
@@ -24,8 +17,8 @@
 }
 
 .rating {
-  width: 90%;
   display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -41,27 +34,23 @@
 }
 
 .comment {
+  width: 100%;
+  height: 100px;
   padding: 10px;
-  height: 90px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
   resize: none;
-  background-color: #fff; /* 调整背景颜色 */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 添加内阴影 */
-  font-size: 1.5rem;
 }
 
 .submit-button {
-  padding: 5px;
-  width: 10%;
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-size: 1.5rem;
 }
 
 .submit-button:hover {
